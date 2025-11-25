@@ -51,9 +51,19 @@ The executable will be located at `build\Release\swat2netcdf.exe`.
     ```bash
     cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
     cmake --build build
-    ```
 
-The executable will be located at `build/swat2netcdf`.
+    The executable will be located at `build/swat2netcdf`.
+
+3.  Install it:
+
+    If you specifically want it in `/usr/bin` (so the final path is `/usr/bin/swat2netcdf`), use:
+    
+
+    ```bash
+    sudo cmake --install build --prefix /usr
+    ```    
+
+
 
 ### macOS
 

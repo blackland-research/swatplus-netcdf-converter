@@ -10,11 +10,13 @@ if(MSVC)
 endif()
 
 # Dependencies
-find_package(netCDFCxx CONFIG REQUIRED)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(NETCDF_CXX REQUIRED netcdf-cxx4)
 find_package(GDAL CONFIG REQUIRED)
 
 # Include directories
 include_directories(include)
+include_directories(${NETCDF_CXX_INCLUDE_DIRS})
 
 # Source files
 set(SOURCES
@@ -29,7 +31,7 @@ add_executable(swat2netcdf ${SOURCES})
 # Link libraries
 target_link_libraries(swat2netcdf 
     PRIVATE 
-    netCDF::netcdf-cxx4
+    ${NETCDF_CXX_LIBRARIES}
     GDAL::GDAL
 )
 
